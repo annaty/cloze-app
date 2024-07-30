@@ -4,7 +4,10 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $api_langs from "./routes/api/langs.ts";
+import * as $api_update_lang from "./routes/api/update_lang.ts";
 import * as $index from "./routes/index.tsx";
+import * as $LanguageSelection from "./islands/LanguageSelection.tsx";
 import * as $SentenceChecker from "./islands/SentenceChecker.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -12,9 +15,12 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/api/langs.ts": $api_langs,
+    "./routes/api/update_lang.ts": $api_update_lang,
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/LanguageSelection.tsx": $LanguageSelection,
     "./islands/SentenceChecker.tsx": $SentenceChecker,
   },
   baseUrl: import.meta.url,

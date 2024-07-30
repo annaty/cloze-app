@@ -9,8 +9,8 @@ export default function App({ Component }: PageProps) {
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
-        <h1 class={"text-4xl"}>Small cloze app</h1>
-        <Component />
+      <h1 className={"text-4xl"}>Clone master</h1>
+      <Component />
       </body>
     </html>
   );
