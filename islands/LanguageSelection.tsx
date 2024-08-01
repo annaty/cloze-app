@@ -3,12 +3,12 @@ import {
   effect,
   signal,
 } from "https://esm.sh/v135/@preact/signals-core@1.5.1/denonext/signals-core.mjs";
+import { AVAILABLE_LANGUAGES } from '../data/available_languages.ts';
 
 export function LanguageSelection(props: {
   guess: string;
   translation: string;
 }) {
-  const availableLanguages = ["pol", "eng", "hun", "fin", "fra"];
   const [guessLangInit, translationLangInit] = [props.guess, props.translation];
   const guessLang = signal(guessLangInit);
   const translationLang = signal(translationLangInit);
@@ -44,32 +44,33 @@ export function LanguageSelection(props: {
   return (
     <div className="flex flex-col">
       <div className={"mr-5"}>
-        <label htmlFor="guess_lang">Fill in the blank language</label>
+        <label htmlFor="guess_lang">Fill in the blank language: </label>
         <select
           name="guess_lang"
           id="guess_lang"
           value={props.guess}
           onChange={(event) => changeLanguage(event, "guess")}
         >
-          {availableLanguages.map((lang) => <option value={lang}>{lang}
-          </option>)}
+          {AVAILABLE_LANGUAGES.map((lang) =>
+            <option value={lang.value}>
+              {lang.label}
+            </option>
+          )}
         </select>
       </div>
       <div>
-        <label htmlFor="translation_lang">Translate to</label>
+        <label htmlFor="translation_lang">Translate to: </label>
         <select
           name="translation_lang"
           id="translation_lang"
           value={props.translation}
           onChange={(event) => changeLanguage(event, "translation")}
         >
-          {availableLanguages.map((lang) => (
-            <option
-              value={lang}
-            >
-              {lang}
+          {AVAILABLE_LANGUAGES.map((lang) =>
+            <option value={lang.value}>
+              {lang.label}
             </option>
-          ))}
+          )}
         </select>
       </div>
     </div>
