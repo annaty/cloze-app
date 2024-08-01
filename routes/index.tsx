@@ -1,13 +1,11 @@
 import { FreshContext } from "https://deno.land/x/fresh@1.6.8/src/server/types.ts";
 import { SentenceChecker } from "../islands/SentenceChecker.tsx";
-import {
-  separateSentenceAndGuessWord,
-  shuffleWordArray,
-} from "../data/text_methods.ts";
 import { getLanguageSelection } from "../services/local_api.ts";
 import { LanguageSelection } from "../islands/LanguageSelection.tsx";
 import { getRandomSentence } from "../services/external_api/tatoeba/api.ts";
 import { getGuessingOptions } from "../services/external_api/api.ts";
+import { separateSentenceAndGuessWord } from '../services/external_api/tatoeba/helpers.ts';
+import { shuffleWordArray } from '../services/external_api/dictionary/helpers.ts';
 
 export const KV = await Deno.openKv();
 

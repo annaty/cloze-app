@@ -1,5 +1,5 @@
 import { TATOEBA_API } from "../../../data/constants.ts";
-import { transformTatoebaResponse } from "./helpers.ts";
+import { separateSentenceAndGuessWord, transformTatoebaResponse } from "./helpers.ts";
 
 export const getRandomSentence = (from: string, to: string) =>
   fetch(
@@ -7,3 +7,7 @@ export const getRandomSentence = (from: string, to: string) =>
   )
     .then((res) => res.json())
     .then((res) => transformTatoebaResponse(res, to));
+
+export const getRandomSentenceWithBlank = async (from: string, to: string): Promise<[string, string]> =>
+  await getRandomSentence(from, to)
+  .then(randomSentence => separateSentenceAndGuessWord(randomSentence.text))

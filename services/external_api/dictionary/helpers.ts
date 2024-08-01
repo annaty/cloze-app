@@ -1,5 +1,5 @@
-import { getWordWithoutPunctuation } from "../../../data/text_methods.ts";
 import { DictionaryApiResponse } from "./types.ts";
+import { getWordWithoutPunctuation } from '../tatoeba/helpers.ts';
 
 export const transformDictionaryResponse = (
   res: DictionaryApiResponse[] | DictionaryApiResponse,
@@ -47,3 +47,9 @@ export const getThreeRandomWords = (words: string[]) => {
   }
   return result;
 };
+
+export const shuffleWordArray = (words: string[]): string[] =>
+  words
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
